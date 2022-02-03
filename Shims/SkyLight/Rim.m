@@ -8,19 +8,12 @@ BOOL rimBeta()
 {
 	dispatch_once(&rimBetaOnce,^()
 	{
-		if([[NSUserDefaults.standardUserDefaults stringForKey:@"AppleInterfaceStyle"] isEqualToString:@"Dark"])
-		{
-			//rimBetaValue=[NSUserDefaults.standardUserDefaults boolForKey:@"ASB_RimBeta"];
-			rimBetaValue=true;
-		} else {
-			rimBetaValue=false;
-		}
+		rimBetaValue=[NSUserDefaults.standardUserDefaults boolForKey:@"ASB_RimBeta"];
 		
 		trace(@"ASB_RimBeta %d",rimBetaValue);
 	});
 	
 	return rimBetaValue;
-	
 }
 
 double rimOverrideValue;
@@ -29,13 +22,7 @@ double rimOverride()
 {
 	dispatch_once(&rimOverrideOnce,^()
 	{
-		//rimOverrideValue=[NSUserDefaults.standardUserDefaults doubleForKey:@"ASB_RimOverride"];
-		if(rimBetaValue&&[@[@"/System/Library/PrivateFrameworks/PaperKit.framework/Contents/LinkedNotesUIService.app/Contents/MacOS/LinkedNotesUIService",@"/System/Library/PreferencePanes/DesktopScreenEffectsPref.prefPane/Contents/Resources/DesktopPictures.prefPane/Contents/XPCServices/com.apple.preference.desktopscreeneffect.desktop.remoteservice.xpc/Contents/MacOS/com.apple.preference.desktopscreeneffect.desktop.remoteservice",@"/System/Library/PreferencePanes/DesktopScreenEffectsPref.prefPane/Contents/Resources/ScreenEffects.prefPane/Contents/XPCServices/com.apple.preference.desktopscreeneffect.screeneffects.remoteservice.xpc/Contents/MacOS/com.apple.preference.desktopscreeneffect.screeneffects.remoteservice",@"/System/Library/PrivateFrameworks/AOSUI.framework/Versions/A/XPCServices/AccountProfileRemoteViewService.xpc/Contents/MacOS/AccountProfileRemoteViewService",@"/System/Library/CoreServices/Siri.app/Contents/XPCServices/SiriNCService.xpc/Contents/MacOS/SiriNCService"] containsObject:NSProcessInfo.processInfo.arguments[0]])
-		{
-			trace(@"blacklisted from fake rim");
-			
-			rimOverrideValue=-1;
-		}
+		rimOverrideValue=[NSUserDefaults.standardUserDefaults doubleForKey:@"ASB_RimOverride"];
 		
 		trace(@"ASB_RimOverride %lf",rimOverrideValue);
 	});
