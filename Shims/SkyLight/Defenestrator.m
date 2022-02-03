@@ -71,8 +71,8 @@ BOOL blurBeta()
 {
 	dispatch_once(&blurBetaOnce,^()
 	{
-		blurBetaValue=[NSUserDefaults.standardUserDefaults boolForKey:@"ASB_BlurBeta"];
-		
+		//blurBetaValue=[NSUserDefaults.standardUserDefaults boolForKey:@"ASB_BlurBeta"];
+		blurBetaValue=true;
 		trace(@"ASB_BlurBeta %d",blurBetaValue);
 	});
 	
