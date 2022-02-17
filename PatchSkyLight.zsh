@@ -160,4 +160,4 @@ function build
 	codesign -f -s - "$mainOut"
 }
 
-build "SkyLightPatched" "./$version/SkyLight" "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight" "Common" -F "/System/Library/PrivateFrameworks" -framework AppleSystemInfo
+build "SkyLightPatched" "./$version/SkyLight" "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight" "Common" -F "/System/Library/PrivateFrameworks" -framework AppleSystemInfo -framework CoreBrightness
